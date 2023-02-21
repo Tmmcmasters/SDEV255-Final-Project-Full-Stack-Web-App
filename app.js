@@ -9,7 +9,7 @@ const app = express();
 // connect to MongoDB
 // username: group5
 // password: #6b.#y3MzApsPvU
-//mongoose.set("strictQuery", false);
+mongoose.set("strictQuery", false);
 const dbURI =
   "mongodb+srv://group5:group5password@cluster0.9j8r4ed.mongodb.net/Group_5_Final_Project_DB?retryWrites=true&w=majority";
 mongoose
@@ -75,13 +75,19 @@ app.get("/courses/create", (req, res) => {
 // I have having trouble with this one. When the code runs, it spits out, "Cast to ObjectId failed for value "sdfg" (type string) at path "_id" for model "Course""
 app.get("/courses/:id", (req, res) => {
   const id = req.params.id;
-  mongoose.Types.ObjectId.isValid(id);
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).render("404", { title: "404" });
+  }
   Course.findById(id)
     .then((result) => {
+      if (!result) {
+        return res.status(404).render("404", { title: "404" });
+      }
       res.render("details", { course: result, title: "Course Details" });
     })
     .catch((error) => {
       console.log(error);
+      res.status(500).send("Internal server error");
     });
 });
 //I am also having trouble with this one. It is throwing the error "TypeError: Cannot read properties of undefined (reading 'redirect')at 63f21e937cc4528a7c796f13:95:41" but it still deletes it from the Database.
