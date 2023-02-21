@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body class="bg-dark">
+    <%- include('./partials/nav.ejs') %>
+
+    <section
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+    >
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div class="details content">
+            <h2><%= course.title %></h2>
+            <h3>Subject: <%= course.subject %></h3>
+            <h4>Credits: <%= course.credits %></h4>
+            <div class="content">
+              <p><%= course.description %></p>
+            </div>
+            <a class="delete" data-doc="<%= course._id %>">delete</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer.ejs') %>
+    <script>
+      //This script could also be causing the delete issue "TypeError: Cannot read properties of undefined (reading 'redirect')at 63f21e937cc4528a7c796f13:95:41"
+      const trashcan = document.querySelector("a.delete");
+
+      trashcan.addEventListener("click", (e) => {
+        const endpoint = `/courses/${trashcan.dataset.doc}`;
+
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            window.location.href = data.redirect;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
