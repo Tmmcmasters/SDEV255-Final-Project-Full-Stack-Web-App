@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./partials/head.ejs') %>
+  <%- include('../partials/head.ejs') %>
   <body class="bg-dark">
-    <%- include('./partials/nav.ejs') %>
+    <%- include('../partials/nav.ejs') %>
 
     <section
       class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
@@ -16,12 +16,15 @@
             <div class="content">
               <p><%= course.description %></p>
             </div>
+            <a class="update" href="/courses/<%= course._id %>/update"
+              >Update</a
+            >
             <a class="delete" data-doc="<%= course._id %>">delete</a>
           </div>
         </div>
       </div>
     </section>
-    <%- include('./partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
     <script>
       //This script could also be causing the delete issue "TypeError: Cannot read properties of undefined (reading 'redirect')at 63f21e937cc4528a7c796f13:95:41"
       const trashcan = document.querySelector("a.delete");

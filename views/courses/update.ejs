@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body class="bg-dark">
+    <%- include('../partials/nav.ejs') %>
+    <section
+      class="bg-dark text-light p-10 p-lg-0 pt-lg-5 text-center text-sm-start"
+    >
+      <div class="container p-10">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div class="m-10">
+            <h1>Create a new <span class="text-warning">Course!</span></h1>
+            <p class="lead my-4">
+              Please enter in the new course's
+              <span class="text-primary">Name</span>,
+              <span class="text-primary">Subject</span>, number of
+              <span class="text-primary">Credit Hours</span>, and a class
+              <span class="text-primary">Description</span>.
+            </p>
+          </div>
+          <img
+            class="img-fluid w-50 d-none d-sm-block px-5"
+            src="/img/newClass.svg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="create-course content">
+        <form action="/courses" method="POST">
+          <label for="title">Course Name:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value="<%= course.title %>"
+            required
+          />
+          <label for="subject">Subject:</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value="<%= course.subject %>"
+            required
+          />
+          <label for="credits">Credits:</label>
+          <input
+            type="text"
+            id="credits"
+            name="credits"
+            value="<%= course.credits %>"
+            required
+          />
+          <label for="description">Course Description:</label>
+          <textarea type="text" id="description" name="description" required>
+            <%= course.description %>
+          </textarea>
+          <button
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#enroll"
+          >
+            Update Course
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
