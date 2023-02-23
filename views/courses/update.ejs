@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="create-course content">
-        <form action="/courses" method="PUT">
+        <form action="/courses/<%= course._id %>" method="POST">
           <label for="title">Course Name:</label>
           <input
             type="text"

@@ -21,9 +21,6 @@ const course_details = (req, res) => {
   }
   Course.findById(id)
     .then((result) => {
-      if (!result) {
-        return res.status(404).render("404", { title: "404" });
-      }
       res.render("courses/details", {
         course: result,
         title: "course Details",
@@ -68,6 +65,7 @@ const course_update_get = (req, res) => {
 
 const course_update_post = (req, res) => {
   console.log("I really want to update this course");
+  console.log(req.body);
   Course.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -78,7 +76,6 @@ const course_update_post = (req, res) => {
     }
   )
     .then((result) => {
-      console.log(result);
       res.redirect("/courses");
     })
     .catch((error) => {
