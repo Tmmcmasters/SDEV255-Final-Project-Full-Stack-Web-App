@@ -16,10 +16,14 @@
             <div class="content">
               <p><%= course.description %></p>
             </div>
-            <a class="update" href="/courses/<%= course._id %>/update"
-              >Update</a
-            >
-            <a class="delete" data-doc="<%= course._id %>">delete</a>
+            <div class="course-options">
+              <a class="update" href="/courses/<%= course._id %>/update"
+                >Update</a
+              >
+              <a class="delete" data-doc="<%= course._id %>">
+                <img src="/img/trashcan.svg" alt="delete icon" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
