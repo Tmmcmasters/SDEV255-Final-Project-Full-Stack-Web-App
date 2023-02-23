@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   res.redirect("/courses");
 });
 
-// TEach routes
+// Teach routes
 app.get("/teachers", (req, res) => {
   res.render("teachers", { title: "Teachers" });
 });
