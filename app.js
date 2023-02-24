@@ -43,9 +43,10 @@ app.get("/teachers", (req, res) => {
 });
 
 // Create a logiIn Route
-app.get("/login/login", (req, res) => {
+
+app.get("/login", (req, res) => {
   res.render("login", { title: "Login" });
-});
+})
 
 // course routes
 app.use("/courses", courseRoutes);
