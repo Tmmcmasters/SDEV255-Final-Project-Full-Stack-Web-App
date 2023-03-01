@@ -21,9 +21,6 @@ const course_details = (req, res) => {
   }
   Course.findById(id)
     .then((result) => {
-      if (!result) {
-        return res.status(404).render("404", { title: "404" });
-      }
       res.render("courses/details", {
         course: result,
         title: "course Details",
@@ -39,6 +36,7 @@ const course_create_get = (req, res) => {
 };
 
 const course_create_post = (req, res) => {
+  console.log("course_create_post");
   console.log(req.body);
   const course = new Course(req.body);
   course
@@ -65,6 +63,26 @@ const course_update_get = (req, res) => {
     });
 };
 
+const course_update_post = (req, res) => {
+  console.log("I really want to update this course");
+  console.log(req.body);
+  Course.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      title: req.body.title,
+      description: req.body.description,
+      subject: req.body.subject,
+      credits: req.body.credits,
+    }
+  )
+    .then((result) => {
+      res.redirect("/courses");
+    })
+    .catch((error) => {
+      res.status(404).render("404", { title: "course not found" });
+    });
+};
+
 const course_delete = (req, res) => {
   const id = req.params.id;
   Course.findByIdAndDelete(id)
@@ -82,5 +100,6 @@ module.exports = {
   course_create_get,
   course_create_post,
   course_update_get,
+  course_update_post,
   course_delete,
 };
