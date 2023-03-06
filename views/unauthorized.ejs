@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body class="bg-dark">
+    <%- include('./partials/nav.ejs') %>
+    <section
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+    >
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1><span class="text-danger">Sorry....You do not have access to this page :&#40;</span></h1>
+            <p class="lead my-4">Unauthorized Access</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="not-found content"></div>
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

@@ -102,18 +102,20 @@ nav {
   color: #ddd;
   box-shadow: 20px 5px 3px rgba(0, 0, 0, 0.406);
   border-radius: 5px;
+  text-shadow: none;
   background: linear-gradient(to bottom, rgba(75, 75, 75, 0.319),rgba(63, 63, 63, 0.152), rgba(63, 63, 63, 0));
-  transition: scale 1s, box-shadow 1s, border-radius 1s, background 1s, color 1s;
+  transition: scale 1s, box-shadow 1s, border-radius 1s, background 1s, color 1s, text-shadow 1s;
 }
-.hiddenLinks a:nth-child(4) {
+/* .hiddenLinks a:nth-child(4) {
   grid-column-start:2 ;
-}
+} */
 .hiddenLinks a:hover {
   box-shadow: 30px -20px 20px rgba(0, 0, 0, 0.406);
   scale: 1.1;
   background: #82ff69;
   color: black;
   border-radius: 32px;
+  text-shadow:1px 1px 10px rgba(0, 0, 0, 0.511);
 }
 
 

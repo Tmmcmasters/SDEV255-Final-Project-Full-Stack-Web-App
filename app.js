@@ -60,6 +60,11 @@ app.get("/login", (req, res) => {
   res.render("login", { title: "Login" });
 })
 
+// Create an unauthorized route
+app.get("/unauthorized", (req, res) => {
+  res.render("unauthorized", { title: "Unauthorized" });
+})
+
 // course routes
 app.use("/courses", courseRoutes);
 
