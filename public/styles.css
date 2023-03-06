@@ -41,6 +41,82 @@ nav {
 .content {
   margin-left: 20px;
 }
+.hiddenMessage {
+  opacity: 0;
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-top: 10%;
+  color: #82ff69;
+  text-shadow: 20px 1px 20px rgb(0, 0, 0);
+  filter: blur(5px);
+  scale: 0.5;
+   transition: opacity 2s, scale 2s, filter 2s;
+}
+.showMessage {
+  opacity: 1;
+  filter: blur(0);
+  scale: 1;
+}
+.hiddenLinks a {
+  text-decoration: none;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 120%;
+  text-align: center;
+}
+.hiddenLinks {
+  font-family: "Ubuntu", sans-serif;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, 1fr); */
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  text-decoration: none;
+  scale: 0;
+  filter: blur(10px) opacity(0);
+  transition: scale 2s, filter 2s;
+  margin:0 auto;
+  margin-top: 5%;
+}
+.showLinks {
+  transition-delay: 500ms;
+  scale: 1;
+  filter: blur(0) opacity(1);
+}
+
+.hiddenLinks a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 2%;
+  padding-left: 2%;
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
+  width: 7em;
+  height: 4em;
+  color: #ddd;
+  box-shadow: 20px 5px 3px rgba(0, 0, 0, 0.406);
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(75, 75, 75, 0.319),rgba(63, 63, 63, 0.152), rgba(63, 63, 63, 0));
+  transition: scale 1s, box-shadow 1s, border-radius 1s, background 1s, color 1s;
+}
+.hiddenLinks a:nth-child(4) {
+  grid-column-start:2 ;
+}
+.hiddenLinks a:hover {
+  box-shadow: 30px -20px 20px rgba(0, 0, 0, 0.406);
+  scale: 1.1;
+  background: #82ff69;
+  color: black;
+  border-radius: 32px;
+}
+
+
 
 .courses a {
   display: block;

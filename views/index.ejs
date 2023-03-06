@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body class="bg-dark">
+    <%- include('./partials/nav.ejs') %>
+
+    <% if (user) { %>
+    <h1 class="hiddenMessage">Welcome <%= user.email %>!</h1>
+    <section class="hiddenLinks">
+      <a href="/courses">Courses</a>
+      <a href="/teachers">Teachers</a>
+      <a href="/courses/create">Create</a>
+      <a href="/logout">Log Out</a>
+    </section>
+      <% } else { %>
+        <h1 class="hiddenMessage">Welcome to class viewer!</h1>
+      <section class="hiddenLinks">
+      <a href="/login">Login</a>
+      <a href="/signup">SignUp</a>
+    </section>
+    <% } %>  
+
+    <%-include('./partials/footer.ejs')%>
+    <script defer>
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('showMessage');
+          } else {
+            entry.target.classList.remove('showMessage');
+          }
+        })
+      })
+      const elements = document.querySelectorAll('.hiddenMessage');
+      elements.forEach(element => observer.observe(element));
+
+      //Make another method like the one above for class hiddenLinks
+      const observer2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('showLinks');
+          } else {
+            entry.target.classList.remove('showLinks');
+          }
+        })
+      })
+      const elements2 = document.querySelectorAll('.hiddenLinks');
+      elements2.forEach(element => observer2.observe(element));
+    </script>
+  </body>

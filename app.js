@@ -42,11 +42,13 @@ app.use(cookieParser()); // for accepting cookies
 app.get('*', checkUser);
 
 app.get("/", (req, res) => {
-  res.redirect("/courses");
+  res.redirect("/index");
 });
 
 
-
+app.get("/index", (req, res) => {
+  res.render("index", {title:"Home"});
+})
 // TEach routes
 app.get("/teachers", (req, res) => {
   res.render("teachers", { title: "Teachers" });
