@@ -6,8 +6,6 @@ const courseRoutes = require("./routes/courseRoutes");
 const app = express();
 
 // connect to MongoDB
-// username: group5
-// password: #6b.#y3MzApsPvU
 mongoose.set("strictQuery", false);
 const dbURI =
   "mongodb+srv://group5:group5password@cluster0.9j8r4ed.mongodb.net/Group_5_Final_Project_DB?retryWrites=true&w=majority";
