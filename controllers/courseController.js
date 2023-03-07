@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Course = require("../models/course");
+const Course = require("../models/Course");
+const User = require("../models/User");
 
 // course_index, course_details, course_create_get, course_create_post, course_delete
 

@@ -1,11 +1,15 @@
+//#region IMPORTS
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const courseRoutes = require("./routes/courseRoutes");
 const authRoutes = require("./routes/authRoutes");
+const studentRoutes = require("./routes/studentRoutes");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
+//#endregion END IMPORTS
 
+//#region ESTABLISH SERVER & CONNECTION TO DATABASE
 // express app
 const app = express();
 
@@ -25,6 +29,7 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+//#endregion END ESTABLISH SERVER & CONNECTION TO DATABASE
 
 // register view engine
 app.set("view engine", "ejs");
@@ -39,30 +44,30 @@ app.use(express.json()); // for accepting json data
 app.use(cookieParser()); // for accepting cookies
 
 // routes
-app.get('*', checkUser);
+app.get("*", checkUser);
 
 app.get("/", (req, res) => {
   res.redirect("/index");
 });
 
-
 app.get("/index", (req, res) => {
-  res.render("index", {title:"Home"});
-})
-// TEach routes
+  res.render("index", { title: "Home" });
+});
+
+// Teach routes
 app.get("/teachers", (req, res) => {
   res.render("teachers", { title: "Teachers" });
 });
-
-// Create a logiIn Route
+// student route
+app.get("/student", requireAuth, studentRoutes);
+// Create a log In Route
 
 app.get("/login", (req, res) => {
   res.render("login", { title: "Login" });
-})
+});
 
 // course routes
-app.use("/courses", courseRoutes);
-
+app.use("/courses", requireAuth, courseRoutes);
 
 // auth routes
 app.use(authRoutes);
@@ -71,5 +76,3 @@ app.use(authRoutes);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
-
-

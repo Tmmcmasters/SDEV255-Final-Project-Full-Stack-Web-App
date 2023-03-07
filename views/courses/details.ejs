@@ -3,7 +3,7 @@
   <%- include('../partials/head.ejs') %>
   <body class="bg-dark">
     <%- include('../partials/nav.ejs') %>
-
+    <div class="error-display"></div>
     <section
       class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
     >
@@ -20,19 +20,42 @@
               <a class="update" href="/courses/<%= course._id %>/update"
                 >Update</a
               >
-              <a class="delete" data-doc="<%= course._id %>">
-                <img src="/img/trashcan.svg" alt="delete icon" />
-              </a>
+              <a class="delete" data-doc="<%= course._id %>"> Delete </a>
             </div>
           </div>
         </div>
       </div>
+      <form
+        action="/student"
+        method="POST"
+        style="margin-top: 5em; width: 100%"
+      >
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= course.title %>"
+          required
+        />
+        <button
+          class="btn btn-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#enroll"
+        >
+          Add Course
+        </button>
+      </form>
+      <!-- <button
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="modal"
+        data-bs-target="#enroll"
+      >
+        Add Course
+      </button> -->
     </section>
     <%- include('../partials/footer.ejs') %>
     <script>
-      //This script could also be causing the delete issue "TypeError: Cannot read properties of undefined (reading 'redirect')at 63f21e937cc4528a7c796f13:95:41"
       const trashcan = document.querySelector("a.delete");
-
       trashcan.addEventListener("click", (e) => {
         const endpoint = `/courses/${trashcan.dataset.doc}`;
 
@@ -49,6 +72,11 @@
             console.log(error);
           });
       });
+
+      /* const addClass = document.querySelector("button");
+      addClass.addEventListener("click", (e) => {
+        console.log(user, course);
+      }); */
     </script>
   </body>
 </html>
