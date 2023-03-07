@@ -124,11 +124,11 @@ nav {
   display: block;
   margin: 40px 0;
   padding-left: 30px;
-  border-left: 6px solid blue;
+  /* border-left: 6px solid blue; */
 }
-.courses a:hover h3 {
+/* .courses a:hover h3 {
   color: lightblue;
-}
+} */
 
 .details {
   position: relative;
@@ -238,4 +238,26 @@ form h2 {
   margin: 10px 2px;
   font-size: .9em;
   font-weight: bold;
+}
+/* VIEWING COURSES PAGE */
+.single {
+  text-decoration: none;
+  margin-top: 30px;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(75, 75, 75, 0.58),rgba(63, 63, 63, 0.152), rgba(63, 63, 63, 0));
+  box-shadow: 20px 5px 3px rgba(0, 0, 0, 0.406);
+  color: #ddd;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  transition: .7s;
+}
+.single:hover{
+  color: black;
+  box-shadow: 30px -20px 20px rgba(0, 0, 0, 0.406);
+  scale: 1.01;
+  background: #82ff69;
+  border-radius: 32px;
+  
 }

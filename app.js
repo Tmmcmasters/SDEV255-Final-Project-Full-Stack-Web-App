@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const courseRoutes = require("./routes/courseRoutes");
 const authRoutes = require("./routes/authRoutes");
-const { requireAuth, checkUser } = require("./middleware/authMiddleware");
+const { requireAuth, checkUser, allowedEmails } = require("./middleware/authMiddleware");
+const User = require("./models/User");
 
 // express app
 const app = express();
@@ -50,10 +51,15 @@ app.get("/index", (req, res) => {
   res.render("index", {title:"Home"});
 })
 // TEach routes
-app.get("/teachers", (req, res) => {
-  res.render("teachers", { title: "Teachers" });
+// in your server-side code
+app.get('/teachers', (req, res) => {
+  // find all users with email addresses in the allowedEmails array
+  User.find({ email: { $in: allowedEmails } })
+    .then(teachers => {
+      // render the EJS template and pass in the list of teachers
+      res.render('teachers', { title: 'Teachers', teachers });
+    });
 });
-
 // Create a logiIn Route
 
 app.get("/login", (req, res) => {
