@@ -186,7 +186,7 @@ form{
   border-radius: 10px;
   background: linear-gradient(to bottom, rgba(75, 75, 75, 0.58),rgba(63, 63, 63, 0.152), rgba(63, 63, 63, 0));
   scale: 1.0;
-  margin-top: 15%;
+  margin-top: 8%;
   margin-bottom: 20%;
   transition: 1s;
 }
@@ -206,10 +206,34 @@ input{
 input:hover{
   scale: 1.05;
   box-shadow: 8px 5px 5px rgba(0, 0, 0, 0.2);
+  
 }
-label{
-  display: block;
-  margin: 20px 0 10px;
+label {
+  transform: translateY(20px);
+  color: #ddd;
+  margin: 0;
+  opacity: 0;
+  transition: all 0.5s ease-in-out; /* add this line */
+}
+
+form:hover label:nth-of-type(4) {
+  opacity: 1;
+  transform: translateY(0);
+}
+form:hover label:nth-of-type(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
+form:hover label:nth-of-type(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 200ms;
+}
+form:hover label:nth-of-type(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 300ms;
 }
 button{
   margin-top: 30px;
@@ -251,13 +275,42 @@ form h2 {
   font-size: 0.8em;
   display: block;
   padding: 10px 16px;
+  opacity: 0;
+  transform: translateY(20px);
   transition: .7s;
 }
 .single:hover{
+  cursor: pointer;
   color: black;
   box-shadow: 30px -20px 20px rgba(0, 0, 0, 0.406);
   scale: 1.01;
   background: #82ff69;
   border-radius: 32px;
+  transition-delay: 0ms;
   
 }
+.container:hover .single:nth-of-type(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
+.container:hover .single:nth-of-type(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 75ms;
+}
+.container:hover .single:nth-of-type(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 50ms;
+}
+.container:hover .single:nth-of-type(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 25ms;
+}
+.container:hover .single:nth-of-type(5) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
