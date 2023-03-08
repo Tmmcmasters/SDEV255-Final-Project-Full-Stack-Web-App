@@ -8,12 +8,44 @@
     >
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
+<<<<<<< HEAD
           <div>
             <h1><span class="text-warning">Student</span> Class Schedule</h1>
+=======
+          <div class="courses content">
+            <h2>All Your Courses</h2>
+
+            <% if (courses.length > 0) { %> <% courses.forEach(course => { %>
+
+            <h3 class="title"><%= course.title %></h3>
+            <p class="subject"><%= course.subject %></p>
+            <form
+              action="/student/<%= user._id %>/drop"
+              method="POST"
+              style="all: initial; all: unset"
+            >
+              <input
+                type="hidden"
+                name="dropclasses"
+                value="<%= course.title %>"
+              />
+              <button class="dropClass" data-doc="<%= user._id %>">
+                Drop Course
+              </button>
+            </form>
+
+            <% }) %> <% } else { %>
+            <p>There are no courses to dispay!</p>
+            <% } %>
+>>>>>>> main
           </div>
         </div>
       </div>
     </section>
     <%- include('./partials/footer.ejs') %>
+<<<<<<< HEAD
+=======
+    <script></script>
+>>>>>>> main
   </body>
 </html>

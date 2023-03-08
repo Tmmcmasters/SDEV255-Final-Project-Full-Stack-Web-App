@@ -14,9 +14,17 @@
     <div class="collapse navbar-collapse" id="navmenu">
       <ul class="navbar-nav ms-auto">
         <% if (user) { %>
+<<<<<<< HEAD
         <li class="nav-item">Weclome, <%= user.email %></li>
         <li class="nav-item">
           <a href="/student" class="nav-link">Student Info</a>
+=======
+        <li class="nav-item">
+          Weclome, <%= user.firstName %> <%=user.lastName %>!
+        </li>
+        <li class="nav-item">
+          <a href="/student/<%= user._id %>" class="nav-link">Student Info</a>
+>>>>>>> main
         </li>
         <li class="nav-item">
           <a href="/courses" class="nav-link">Courses</a>

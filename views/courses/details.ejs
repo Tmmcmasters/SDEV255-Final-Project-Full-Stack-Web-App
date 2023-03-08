@@ -23,6 +23,17 @@
               <a class="delete" data-doc="<%= course._id %>"> Delete </a>
             </div>
           </div>
+          <form
+            action="/student/<%= user._id %>"
+            method="POST"
+            style="all: initial; all: unset"
+          >
+            <input type="hidden" name="classes" value="<%= course.title %>" />
+            <input type="hidden" name="userID" value="<%= user._id %>" />
+            <button class="addClass" data-doc="<%= user._id %>">
+              Add Course
+            </button>
+          </form>
         </div>
       </div>
       <form
@@ -58,7 +69,6 @@
       const trashcan = document.querySelector("a.delete");
       trashcan.addEventListener("click", (e) => {
         const endpoint = `/courses/${trashcan.dataset.doc}`;
-
         fetch(endpoint, {
           method: "DELETE",
         })

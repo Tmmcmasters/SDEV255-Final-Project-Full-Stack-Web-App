@@ -65,7 +65,6 @@ const course_update_get = (req, res) => {
 };
 
 const course_update_post = (req, res) => {
-  console.log("I really want to update this course");
   console.log(req.body);
   Course.findOneAndUpdate(
     { _id: req.params.id },

@@ -5,7 +5,7 @@
     <%- include('./partials/nav.ejs') %>
 
     <% if (user) { %>
-    <h1 class="hiddenMessage">Welcome <%= user.email %>!</h1>
+    <h1 class="hiddenMessage">Welcome <%= user.firstName %> <%=user.lastName %>!</h1>
     <section class="hiddenLinks">
       <a href="/courses">Courses</a>
       <a href="/teachers">Teachers</a>

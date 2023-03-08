@@ -3,6 +3,19 @@ const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
+<<<<<<< HEAD
+=======
+  firstName: {
+    type: String,
+    required: [true, "Name is required"],
+    minlength: [3, "First name must be at least 3 characters"],
+  },
+  lastName: {
+    type: String,
+    required: [true, "Name is required"],
+    minlength: [3, "Last name must be at least 3 characters"],
+  },
+>>>>>>> main
   email: {
     type: String,
     required: [true, "Email is required...sorry"],
@@ -19,6 +32,7 @@ const userSchema = new mongoose.Schema({
     type: Array,
   },
 });
+<<<<<<< HEAD
 
 // //fire a function after doc saved db
 
@@ -28,6 +42,8 @@ const userSchema = new mongoose.Schema({
 // })
 
 // fire a function before doc saved db
+=======
+>>>>>>> main
 
 userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();

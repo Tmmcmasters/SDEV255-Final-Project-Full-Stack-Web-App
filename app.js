@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const courseRoutes = require("./routes/courseRoutes");
+const studentRoutes = require("./routes/studentRoutes");
 const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
