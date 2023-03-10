@@ -15,7 +15,11 @@ router.get("/create", requireAllowedEmail, courseController.course_create_get);
 router.get("/search/", courseController.course_search);
 
 // handle individual course entries
-router.get("/:id/update", courseController.course_update_get);
+router.get(
+  "/:id/update",
+  requireAllowedEmail,
+  courseController.course_update_get
+);
 router.post("/:id", courseController.course_update_post);
 
 router.get("/:id", courseController.course_details);
