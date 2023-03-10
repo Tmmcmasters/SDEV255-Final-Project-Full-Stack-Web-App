@@ -1,8 +1,6 @@
 const User = require("../models/User");
 const Course = require("../models/course");
 
-// course_index, course_details, course_create_get, course_create_post, course_delete
-
 const student_index = (req, res) => {
   const id = req.params.id;
   let user = User.findById(id).then((result) => {

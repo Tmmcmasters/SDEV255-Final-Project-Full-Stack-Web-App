@@ -29,7 +29,7 @@ mongoose
   .then((result) => {
     console.log("connected to MongoDB");
     // listen for requests
-    app.listen(8080);
+    app.listen(3000);
   })
   .catch((error) => {
     console.log(error);
