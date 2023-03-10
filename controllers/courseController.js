@@ -16,14 +16,28 @@ const course_index = (req, res) => {
 
 const course_search = (req, res) => {
   const courseName = req.query.courseName;
-  Course.find({})
-    .or([{ title: courseName }, { subject: courseName }])
-    .then((result) => {
-      res.render("courses/index", { title: "Found courses", courses: result });
-    })
-    .catch((error) => {
-      res.status(404).render("404", { title: "course not found" });
-    });
+  if (courseName) {
+    Course.find({})
+      .or([{ title: courseName }, { subject: courseName }])
+      .then((result) => {
+        res.render("courses/index", {
+          title: "Found courses",
+          courses: result,
+        });
+      })
+      .catch((error) => {
+        res.status(404).render("404", { title: "course not found" });
+      });
+  } else {
+    Course.find()
+      .sort({ createdAt: -1 })
+      .then((result) => {
+        res.render("courses/index", { title: "All courses", courses: result });
+      })
+      .catch((error) => {
+        res.status(404).render("404", { title: "course not found" });
+      });
+  }
 };
 
 const course_details = (req, res) => {
