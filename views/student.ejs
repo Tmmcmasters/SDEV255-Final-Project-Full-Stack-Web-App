@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body class="bg-dark">
+    <%- include('./partials/nav.ejs') %>
+    <section
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+    >
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div class="courses content">
+            <h2>All Your Courses</h2>
+
+            <% if (courses.length > 0) { %> <% courses.forEach(course => { %>
+
+            <h3 class="title"><%= course.title %></h3>
+            <p class="subject"><%= course.subject %></p>
+            <form
+              action="/student/<%= user._id %>/drop"
+              method="POST"
+              style="all: initial; all: unset"
+            >
+              <input
+                type="hidden"
+                name="dropclasses"
+                value="<%= course.title %>"
+              />
+              <button class="dropClass mb-5" data-doc="<%= user._id %>">
+                Drop Course
+              </button>
+            </form>
+
+            <% }) %> <% } else { %>
+            <p>There are no courses to dispay!</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer.ejs') %>
+    <script></script>
+  </body>
+</html>

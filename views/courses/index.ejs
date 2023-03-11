@@ -10,7 +10,18 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div class="courses content">
-            <h2>All Courses</h2>
+            <div>
+              <form
+                action="/courses/search"
+                method="GET"
+                style="all: initial; all: unset"
+              >
+                <input type="text" name="courseName" placeholder="Search..." />
+                <button class="addClass">Search Courses</button>
+              </form>
+            </div>
+
+            <h2 class="mt-5">All Courses</h2>
 
             <% if (courses.length > 0) { %> <% courses.forEach(course => { %>
             <a class="single" href="/courses/<%= course._id %>">

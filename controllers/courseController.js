@@ -14,6 +14,32 @@ const course_index = (req, res) => {
     });
 };
 
+const course_search = (req, res) => {
+  const courseName = req.query.courseName;
+  if (courseName) {
+    Course.find({})
+      .or([{ title: courseName }, { subject: courseName }])
+      .then((result) => {
+        res.render("courses/index", {
+          title: "Found courses",
+          courses: result,
+        });
+      })
+      .catch((error) => {
+        res.status(404).render("404", { title: "course not found" });
+      });
+  } else {
+    Course.find()
+      .sort({ createdAt: -1 })
+      .then((result) => {
+        res.render("courses/index", { title: "All courses", courses: result });
+      })
+      .catch((error) => {
+        res.status(404).render("404", { title: "course not found" });
+      });
+  }
+};
+
 const course_details = (req, res) => {
   const id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -36,8 +62,6 @@ const course_create_get = (req, res) => {
 };
 
 const course_create_post = (req, res) => {
-  console.log("course_create_post");
-  console.log(req.body);
   const course = new Course(req.body);
   course
     .save()
@@ -64,7 +88,6 @@ const course_update_get = (req, res) => {
 };
 
 const course_update_post = (req, res) => {
-  console.log("I really want to update this course");
   console.log(req.body);
   Course.findOneAndUpdate(
     { _id: req.params.id },
@@ -96,6 +119,7 @@ const course_delete = (req, res) => {
 
 module.exports = {
   course_index,
+  course_search,
   course_details,
   course_create_get,
   course_create_post,

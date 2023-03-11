@@ -28,16 +28,17 @@
       <div class="create-course content">
         <form action="/courses" method="POST" style="margin-top:5em; width: 100%;" >
           <label for="title">Course Name:</label>
-          <input type="text" id="title" name="title" required />
+          <input type="text" id="title" name="title" placeholder="Course Name" required />
           <label for="subject">Subject:</label>
-          <input type="text" id="subject" name="subject" required />
+          <input type="text" id="subject" name="subject" placeholder="Subject" required />
           <label for="credits">Credits:</label>
-          <input type="text" id="credits" name="credits" required />
+          <input type="text" id="credits" name="credits" placeholder="Credits" required />
           <label for="description">Course Description:</label>
           <textarea
             type="text"
             id="description"
             name="description"
+            placeholder="Course Description"
             required
           ></textarea>
           <button
