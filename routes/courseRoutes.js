@@ -24,6 +24,6 @@ router.post("/:id", courseController.course_update_post);
 
 router.get("/:id", courseController.course_details);
 
-router.delete("/:id", courseController.course_delete);
+router.delete("/:id", requireAllowedEmail, courseController.course_delete);
 
 module.exports = router;
