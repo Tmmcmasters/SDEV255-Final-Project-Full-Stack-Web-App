@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { requireAuth } = require("../middleware/authMiddleware");
+
 const courseController = require("../controllers/courseController");
 const User = require("../models/User");
-const { requireAllowedEmail } = require("../middleware/authMiddleware");
+const {
+  requireStudentEmail,
+  requireAllowedEmail,
+  checkUser,
+} = require("../middleware/authMiddleware");
 
 router.get("/", courseController.course_index);
 

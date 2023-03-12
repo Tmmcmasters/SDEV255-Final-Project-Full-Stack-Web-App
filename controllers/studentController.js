@@ -10,7 +10,6 @@ const student_index = (req, res) => {
           title: "Student Info",
           courses: result,
         });
-        console.log(result);
       })
       .catch((err) => {
         console.log("error");

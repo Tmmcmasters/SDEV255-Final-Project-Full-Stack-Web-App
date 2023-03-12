@@ -85,17 +85,21 @@ const requireStudentEmail = (req, res, next) => {
 
 // Check current user
 const checkUser = (req, res, next) => {
+  console.log("one");
   const token = req.cookies.jwt;
   if (token) {
+    console.log("two");
     jwt.verify(
       token,
       "course secret key that will be used to sign the token",
       async (err, decodedToken) => {
         if (err) {
+          console.log("three");
           console.log(err.message);
           res.locals.user = null;
           next();
         } else {
+          console.log("four");
           console.log(decodedToken);
           let user = await User.findById(decodedToken.id);
           res.locals.user = user;
@@ -104,6 +108,7 @@ const checkUser = (req, res, next) => {
       }
     );
   } else {
+    console.log("five");
     res.locals.user = null;
     next();
   }
