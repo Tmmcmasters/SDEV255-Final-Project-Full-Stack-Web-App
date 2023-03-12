@@ -9,17 +9,31 @@
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>List of <span class="text-warning">Teachers!</span></h1>
-            <p class="lead my-4">Here is a list of teachers.</p>
+              <!-- in your EJS template -->
+    <h1>List of <span class="text-warning">Teachers!</span></h1>
+    <p class="lead my-4">Here is a list of teachers.</p>
+    <% teachers.forEach(teacher => { %>
+      <div class="single">
+        <h3 class="title"><%= teacher.firstName %>, <%= teacher.lastName %></h3>
+      <p class="subject"><%= teacher.email %></p>
+    </div>
+      <% }) %>
+              
+  
+              
           </div>
           <img
             class="img-fluid w-50 d-none d-sm-block px-5"
             src="img/teacher.svg"
             alt=""
           />
+          
         </div>
       </div>
     </section>
     <%- include('./partials/footer.ejs') %>
+    <script>
+      
+    </script>
   </body>
 </html>

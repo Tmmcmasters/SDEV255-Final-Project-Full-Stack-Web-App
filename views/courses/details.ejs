@@ -20,22 +20,28 @@
               <a class="update" href="/courses/<%= course._id %>/update"
                 >Update</a
               >
-              <a class="delete" data-doc="<%= course._id %>">
-                <img src="/img/trashcan.svg" alt="delete icon" />
-              </a>
+              <a class="delete" data-doc="<%= course._id %>"> Delete </a>
             </div>
           </div>
+          <form
+            action="/student/<%= user._id %>"
+            method="POST"
+            style="all: initial; all: unset"
+          >
+            <input type="hidden" name="classes" value="<%= course.title %>" />
+            <input type="hidden" name="userID" value="<%= user._id %>" />
+            <button class="addClass" data-doc="<%= user._id %>">
+              Add Course
+            </button>
+          </form>
         </div>
       </div>
     </section>
     <%- include('../partials/footer.ejs') %>
     <script>
-      //This script could also be causing the delete issue "TypeError: Cannot read properties of undefined (reading 'redirect')at 63f21e937cc4528a7c796f13:95:41"
       const trashcan = document.querySelector("a.delete");
-
       trashcan.addEventListener("click", (e) => {
         const endpoint = `/courses/${trashcan.dataset.doc}`;
-
         fetch(endpoint, {
           method: "DELETE",
         })
