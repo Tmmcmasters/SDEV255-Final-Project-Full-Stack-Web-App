@@ -7,4 +7,4 @@ To Run this program, make sure to install all of the dependencies by running "np
 
 After you have npm installed. Then, you can run the command "nodemon app" 
 
-If everything goes well, you can access the web app 
+If everything goes well, you can access the web app on "localhost:3000"
